@@ -17,39 +17,83 @@
     </button>
 </nav>
 
-<div class="dashboard">
+<main class="dashboard">
 
     <div class="welcome-card">
-        <h1>Welcome to Employee Management System!</h1>
-        <p id="userEmail">Loading user details...</p>
-        <span id="userRole" class="role-badge"></span>
+        <h1>Employee Management</h1>
+        <p>Manage employee records from one place.</p>
     </div>
 
-    <div class="dashboard-grid">
+    <div class="employee-toolbar">
+        <h2>Employees</h2>
 
-        <div class="dashboard-card">
-            <h3>Authentication</h3>
-            <p id="authStatus">Checking...</p>
-        </div>
-
-        <div class="dashboard-card">
-            <h3>Account Role</h3>
-            <p id="roleDisplay">Loading...</p>
-        </div>
-
-        <div class="dashboard-card">
-            <h3>Employee Management</h3>
-            <p>Manage your employee records through protected APIs.</p>
-        </div>
-
+        <button id="addEmployeeBtn" class="primary-btn">
+            + Add Employee
+        </button>
     </div>
 
-    <div class="dashboard-card">
-        <h3>Server Response</h3>
-        <p id="serverResponse">Waiting for server...</p>
+    <!-- Employee form -->
+    <div id="employeeFormContainer" class="form-card hidden">
+
+        <h2 id="employeeFormTitle">Add Employee</h2>
+
+        <form id="employeeForm">
+
+            <input type="hidden" id="employeeId">
+
+            <label>Name</label>
+            <input type="text" id="employeeName"
+                   placeholder="Enter employee name" required>
+
+            <label>Email</label>
+            <input type="email" id="employeeEmail"
+                   placeholder="Enter employee email" required>
+
+            <label>Department</label>
+            <input type="text" id="employeeDepartment"
+                   placeholder="Enter department" required>
+
+            <label>Salary</label>
+            <input type="number" id="employeeSalary"
+                   placeholder="Enter salary" min="0" step="0.01" required>
+
+            <div class="form-actions">
+                <button type="submit" class="primary-btn">Save Employee</button>
+                <button type="button" id="cancelEmployeeBtn" class="secondary-btn">
+                    Cancel
+                </button>
+            </div>
+
+        </form>
     </div>
 
-</div>
+    <p id="employeeMessage"></p>
+
+    <!-- Employee table -->
+    <div class="table-container">
+        <table class="employee-table">
+
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody id="employeeTableBody">
+            <tr>
+                <td colspan="6">Loading employees...</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+</main>
 
 <script th:src="@{/js/app.js}"></script>
 </body>
